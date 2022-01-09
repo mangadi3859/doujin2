@@ -1,0 +1,10 @@
+footer#footer {
+  margin-top: auto;
+  width: 100vw;
+}
+footer#footer .footer-separator {
+  width: 100%;
+  height: auto;
+}
+
+/*# sourceMappingURL=footer.css.map */

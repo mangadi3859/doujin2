@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/public/css/navbar.css" />
+
+<div class="navbar-phone">
+    <i class="fas fa-bars" data-nav-btn></i>
+    <%- include("./_navitems.ejs") -%>
+</div>
+<a href="#main" aria-hidden="true" id="skip-nav">Skip Navigation</a>
+<div class="header-wrapper">
+    <div class="hero-isla-bg" class="div" style="background-image: url('/public/images/hero-parallax.png')">
+        <header class="hero" id="hero">
+            <nav class="nav-root d-flex justify-content-between align-items-center">
+                <i class="fas fa-bars" data-nav-btn></i>
+                <a href="/" class="brand-name" data-fade="down">
+                    ISLA
+                    <br />
+                    DOUJIN
+                </a>
+                <%- include("./_navitems.ejs") -%>
+            </nav>
+            <div class="hero-body d-flex flex-column justify-content-center align-items-center">
+                <h1 class="header-title"><%= locals.title || "Doujin Downloader" %></h1>
+                <a href="https://github.com/mangadi3859/" class="github-link btn text-white">GITHUB</a>
+            </div>
+            <!-- <img src="/public/images/hero-parallax.png" class="nav-img" /> -->
+        </header>
+    </div>
+</div>

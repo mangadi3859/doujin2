@@ -1,0 +1,162 @@
+body.active {
+  overflow-y: hidden;
+}
+
+#skip-nav {
+  background-color: var(--clr-bg);
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0.5em;
+  transform: translateX(-200%);
+  color: var(--clr-primary);
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  padding: 0.3em 0.5em;
+  border-radius: 0 0.2rem 0.2rem 0;
+}
+#skip-nav:focus {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.header-wrapper {
+  background-color: var(--clr-primary);
+}
+.header-wrapper .hero-isla-bg {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.header-wrapper .hero-isla-bg header#hero {
+  backdrop-filter: brightness(0.5);
+  -webkit-backdrop-filter: brightness(0.5);
+  width: 100%;
+  position: relative;
+  min-height: 30rem;
+  overflow: hidden;
+  position: relative;
+}
+.header-wrapper .hero-isla-bg header#hero .nav-root {
+  z-index: 10;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+.header-wrapper .hero-isla-bg header#hero .nav-root i {
+  position: absolute;
+  display: none;
+  z-index: 2001;
+  right: 0;
+  top: 0;
+  margin: 0.3em;
+  padding: 0.25em 0.3em;
+  font-size: 2rem;
+}
+.header-wrapper .hero-isla-bg header#hero .nav-root i::before {
+  z-index: 2001;
+}
+.header-wrapper .hero-isla-bg header#hero .nav-root a {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.125s ease-in;
+}
+.header-wrapper .hero-isla-bg header#hero .nav-root a:hover {
+  color: #d9d9d9;
+}
+.header-wrapper .hero-isla-bg header#hero .nav-root .brand-name {
+  font-weight: bold;
+  font-size: clamp(0.65rem, 3vw, 1.25rem);
+  line-height: 1.25em;
+}
+.header-wrapper .hero-isla-bg header#hero .hero-body {
+  opacity: 1 !important;
+  position: absolute;
+  gap: 3.5em;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+}
+.header-wrapper .hero-isla-bg header#hero .hero-body .header-title {
+  font-size: clamp(0.9rem, 5vw, 1.75rem);
+}
+.header-wrapper .hero-isla-bg header#hero .hero-body .github-link {
+  font-weight: 600;
+  padding: 0.5em 1.5em;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  border-radius: 100rem;
+  border: 2px solid white;
+  transition: 0.3s ease-in-out;
+}
+.header-wrapper .hero-isla-bg header#hero .hero-body .github-link:hover, .header-wrapper .hero-isla-bg header#hero .hero-body .github-link:focus {
+  color: var(--clr-primary-300) !important;
+  background-color: white;
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-list .nav-item a {
+  padding: 0.5em 1em;
+  display: block;
+}
+
+.navbar-phone {
+  width: 75vw;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  z-index: 2000;
+  display: none;
+  color: white;
+  transform: translateX(100%);
+  transition: 0.4s ease-out;
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
+}
+@supports (backdrop-filter: blur(1rem)) {
+  .navbar-phone {
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+}
+.navbar-phone.active {
+  transform: translateX(0);
+}
+.navbar-phone a {
+  color: white !important;
+}
+.navbar-phone i {
+  position: absolute;
+  display: none;
+  z-index: 2001;
+  right: 0;
+  top: 0;
+  margin: 0.3em;
+  padding: 0.25em 0.3em;
+  font-size: 2rem;
+}
+.navbar-phone .nav-list {
+  flex-direction: column;
+  justify-content: space-evenly !important;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  header#hero .nav-list {
+    display: none !important;
+  }
+
+  [data-nav-btn] {
+    display: inline-block !important;
+  }
+
+  .navbar-phone {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=navbar.css.map */
