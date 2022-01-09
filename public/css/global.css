@@ -1,15 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @font-face {
-  src: url("./public/font/Gotham Rounded Medium.otf") format("opentype");
+  src: url("/public/font/Gotham Rounded Medium.otf") format("opentype");
   font-family: "Gotham Rounded Medium";
 }
 @font-face {
-  src: url("./public/font/Gotham Rounded Light.otf") format("opentype");
+  src: url("/public/font/Gotham Rounded Light.otf") format("opentype");
   font-family: "Gotham Rounded Light";
 }
 :root {
   --clr-primary: #ed2553;
   --clr-primary-300: #c6103a;
+  --clr-primary-200: hsl(346, 85%, 32%);
   --clr-bg: #1f1f1f;
 }
 
@@ -36,8 +37,24 @@ body#body {
   overflow-x: hidden;
 }
 
+main {
+  margin-top: 15vh;
+}
+
 p {
   margin-bottom: 0;
+}
+
+html::-webkit-scrollbar {
+  background-color: var(--clr-bg);
+}
+
+html::-webkit-scrollbar-botton {
+  background-color: var(--clr-primary-300);
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary-300);
 }
 
 /*# sourceMappingURL=global.css.map */

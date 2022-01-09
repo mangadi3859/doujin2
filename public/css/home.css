@@ -1,3 +1,76 @@
-
+main#main form {
+  position: relative;
+  height: 80vh;
+  width: 100vw;
+}
+main#main form .title {
+  font-size: 2.6rem;
+  width: 40%;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+main#main form .input-id {
+  position: relative;
+  font-size: 2.4rem;
+  gap: 0.2em;
+}
+main#main form .input-id::before {
+  content: "";
+  aspect-ratio: 4/8;
+  position: absolute;
+  width: auto;
+  height: 10em;
+  right: 0;
+  top: 35%;
+  transform: translate(-20%, -50%);
+  background-image: url(/public/images/isla-gallery.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+}
+main#main form .input-id label {
+  margin: 0;
+}
+main#main form .input-id #doujin-input {
+  font-size: 2rem;
+  border: 0;
+  outline: 0;
+  width: 25vw;
+  padding-inline: 0.5em;
+  padding-block: 0;
+  border-radius: 0.75rem;
+  border: 0.1em solid var(--clr-bg);
+}
+main#main form .input-id #doujin-input:focus {
+  background-color: #ccc;
+}
+main#main form .buttons {
+  margin-top: 1em;
+  position: relative;
+  width: 57%;
+  gap: 1.5em;
+}
+main#main form .buttons * {
+  border-radius: 10rem;
+  border: 2px solid white;
+  padding: 0.5em 1.2em;
+  font-size: 1.125rem;
+  transition: 0.2s ease-in;
+}
+main#main form .buttons button {
+  background-color: var(--clr-primary);
+  border-color: black;
+}
+main#main form .buttons button:hover, main#main form .buttons button:focus {
+  background-color: var(--clr-primary-300);
+}
+main#main form .buttons a {
+  margin-left: auto;
+  background: transparent;
+}
+main#main form .buttons a:hover, main#main form .buttons a:focus {
+  background-color: white;
+  color: var(--clr-bg);
+}
 
 /*# sourceMappingURL=home.css.map */

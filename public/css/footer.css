@@ -1,10 +1,51 @@
 footer#footer {
   margin-top: auto;
   width: 100vw;
+  overflow: hidden;
+  background-color: var(--clr-bg);
 }
 footer#footer .footer-separator {
-  width: 100%;
-  height: auto;
+  fill: var(--clr-primary-300);
+}
+footer#footer .footer-content {
+  padding: 1.5rem;
+  background-color: var(--clr-primary-300);
+  height: 25vh;
+  font-family: Poppins, "Gotham Rounded Medium";
+  font-weight: 400;
+}
+footer#footer .footer-content .footer-img {
+  left: 23vw;
+  bottom: 0;
+  opacity: 0.3;
+  width: auto;
+  height: 120%;
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  footer#footer .footer-content .footer-img {
+    left: 0;
+    height: 100%;
+  }
+}
+footer#footer .footer-content .copyright {
+  position: absolute;
+  padding: clamp(0.8em, 1.5vw, 1.25em);
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  opacity: 0.65;
+  color: white;
+  transition: 0.2s ease;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+footer#footer .footer-content .text {
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: clamp(0.85rem, 2vw, 1.3rem);
+}
+footer#footer .footer-content .text span {
+  opacity: 0.3;
 }
 
 /*# sourceMappingURL=footer.css.map */

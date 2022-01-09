@@ -38,6 +38,10 @@ body.active {
             overflow: hidden;
             position: relative;
 
+            @media (max-width: 767px) {
+                min-height: 20rem;
+            }
+
             // .nav-img {
             //     position: absolute;
             //     top: 0;
@@ -106,6 +110,7 @@ body.active {
 
                 .github-link {
                     font-weight: 600;
+                    letter-spacing: 3px;
                     padding: 0.5em 1.5em;
                     font-size: clamp(1rem, 4vw, 1.25rem);
                     border-radius: 100rem;
@@ -151,9 +156,10 @@ body.active {
 
     backdrop-filter: blur(1rem);
     -webkit-backdrop-filter: blur(1rem);
+    background-color: rgba(black, 0.3);
 
-    @supports (backdrop-filter: blur(1rem)) {
-        background-color: rgba(black, 0.75);
+    @supports not (backdrop-filter: none) {
+        background-color: rgba(black, 0.5);
     }
 
     &.active {

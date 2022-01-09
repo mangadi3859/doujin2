@@ -37,6 +37,11 @@ body.active {
   overflow: hidden;
   position: relative;
 }
+@media (max-width: 767px) {
+  .header-wrapper .hero-isla-bg header#hero {
+    min-height: 20rem;
+  }
+}
 .header-wrapper .hero-isla-bg header#hero .nav-root {
   z-index: 10;
   width: 100%;
@@ -84,6 +89,7 @@ body.active {
 }
 .header-wrapper .hero-isla-bg header#hero .hero-body .github-link {
   font-weight: 600;
+  letter-spacing: 3px;
   padding: 0.5em 1.5em;
   font-size: clamp(1rem, 4vw, 1.25rem);
   border-radius: 100rem;
@@ -117,10 +123,11 @@ body.active {
   transition: 0.4s ease-out;
   backdrop-filter: blur(1rem);
   -webkit-backdrop-filter: blur(1rem);
+  background-color: rgba(0, 0, 0, 0.3);
 }
-@supports (backdrop-filter: blur(1rem)) {
+@supports not (backdrop-filter: none) {
   .navbar-phone {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 .navbar-phone.active {

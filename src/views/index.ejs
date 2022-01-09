@@ -7,12 +7,26 @@
 
         <!-- Keywords -->
         <meta name="keywords" content="isladoujin, doujinisla, download doujin, nhentaidownloader" />
+        <link rel="stylesheet" href="/public/css/home.css" />
         <%- include("components/_meta.ejs") -%>
     </head>
     <body id="body">
         <%- include("components/_navbar.ejs") -%>
         <!-- <h1>Hello World</h1> -->
-        <main id="main"></main>
+        <main id="main">
+            <form action="/download" method="GET" class="position-relative d-flex flex-column justify-content-center align-items-center">
+                <h3 class="title">Input Doujin Code</h3>
+                <span class="input-id d-flex justify-content-center align-items-center">
+                    <label for="doujin-input" class="position-relative" aria-label>https://nhentai.net/g/</label>
+                    <input type="number" name="id" id="doujin-input" class="position-relative text-white" placeholder="ID" />
+                </span>
+                <div class="buttons d-flex align-items-center justify-content-end">
+                    <a href="/search" class="btn btn-primary">SEARCH</a>
+                    <button type="submit" class="btn btn-primary">DOWNLOAD</button>
+                </div>
+                <!-- <img src="/public/images/isla-gallery.png" class="input-bg position-absolute" /> -->
+            </form>
+        </main>
         <%- include("components/_footer.ejs") -%>
     </body>
 </html>

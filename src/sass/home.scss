@@ -1,0 +1,92 @@
+main#main {
+    form {
+        position: relative;
+        height: 80vh;
+        width: 100vw;
+
+        .title {
+            font-size: 2.6rem;
+            width: 40%;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .input-id {
+            position: relative;
+            font-size: 2.4rem;
+            gap: 0.2em;
+
+            &::before {
+                content: "";
+                aspect-ratio: 4 / 8;
+                position: absolute;
+                width: auto;
+                height: 10em;
+                right: 0;
+                top: 35%;
+                transform: translate(-20%, -50%);
+                background-image: url(/public/images/isla-gallery.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+                opacity: 0.75;
+            }
+
+            label {
+                margin: 0;
+            }
+
+            #doujin-input {
+                font-size: 2rem;
+                border: 0;
+                outline: 0;
+                width: 25vw;
+                padding-inline: 0.5em;
+                padding-block: 0;
+                border-radius: 0.75rem;
+                border: 0.1em solid var(--clr-bg);
+                // background: none;
+
+                &:focus {
+                    background-color: #ccc;
+                }
+            }
+        }
+
+        .buttons {
+            margin-top: 1em;
+            position: relative;
+            width: 57%;
+            // background-color: grey;
+            gap: 1.5em;
+
+            * {
+                border-radius: 10rem;
+                border: 2px solid white;
+                padding: 0.5em 1.2em;
+                font-size: 1.125rem;
+                transition: 0.2s ease-in;
+            }
+
+            button {
+                background-color: var(--clr-primary);
+                border-color: black;
+
+                &:hover,
+                &:focus {
+                    background-color: var(--clr-primary-300);
+                }
+            }
+
+            a {
+                margin-left: auto;
+                background: transparent;
+
+                &:hover,
+                &:focus {
+                    background-color: white;
+                    color: var(--clr-bg);
+                }
+            }
+        }
+    }
+}
