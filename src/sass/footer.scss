@@ -1,11 +1,13 @@
 footer#footer {
     margin-top: auto;
     width: 100vw;
-    overflow: hidden;
+    overflow: hidden !important;
     background-color: var(--clr-bg);
 
     .footer-separator {
+        z-index: 1;
         fill: var(--clr-primary-300);
+        margin-bottom: -1px;
     }
 
     .footer-content {

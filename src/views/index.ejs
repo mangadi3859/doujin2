@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="/public/css/home.css" />
         <%- include("components/_meta.ejs") -%>
     </head>
-    <body id="body">
+    <body>
         <%- include("components/_navbar.ejs") -%>
         <!-- <h1>Hello World</h1> -->
         <main id="main">
@@ -18,7 +18,8 @@
                 <h3 class="title">Input Doujin Code</h3>
                 <span class="input-id d-flex justify-content-center align-items-center">
                     <label for="doujin-input" class="position-relative" aria-label>https://nhentai.net/g/</label>
-                    <input type="number" name="id" id="doujin-input" class="position-relative text-white" placeholder="ID" />
+                    <!-- <label for="doujin-input phone" class="position-relative" aria-label>Code</label> -->
+                    <input aria-required="true" required type="number" name="id" id="doujin-input" class="position-relative" placeholder="ID" />
                 </span>
                 <div class="buttons d-flex align-items-center justify-content-end">
                     <a href="/search" class="btn btn-primary">SEARCH</a>

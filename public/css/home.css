@@ -1,7 +1,8 @@
 main#main form {
   position: relative;
   height: 80vh;
-  width: 100vw;
+  width: 100%;
+  margin: 0 !important;
 }
 main#main form .title {
   font-size: 2.6rem;
@@ -10,6 +11,8 @@ main#main form .title {
   font-weight: 600;
 }
 main#main form .input-id {
+  --x: -20%;
+  --y: -50%;
   position: relative;
   font-size: 2.4rem;
   gap: 0.2em;
@@ -22,7 +25,7 @@ main#main form .input-id::before {
   height: 10em;
   right: 0;
   top: 35%;
-  transform: translate(-20%, -50%);
+  transform: translate(var(--x), var(--y));
   background-image: url(/public/images/isla-gallery.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -40,6 +43,7 @@ main#main form .input-id #doujin-input {
   padding-block: 0;
   border-radius: 0.75rem;
   border: 0.1em solid var(--clr-bg);
+  color: var(--clr-bg);
 }
 main#main form .input-id #doujin-input:focus {
   background-color: #ccc;
@@ -47,14 +51,15 @@ main#main form .input-id #doujin-input:focus {
 main#main form .buttons {
   margin-top: 1em;
   position: relative;
-  width: 57%;
+  width: 55%;
   gap: 1.5em;
 }
 main#main form .buttons * {
+  font-size: 1.125rem;
+  position: relative;
   border-radius: 10rem;
   border: 2px solid white;
   padding: 0.5em 1.2em;
-  font-size: 1.125rem;
   transition: 0.2s ease-in;
 }
 main#main form .buttons button {
@@ -71,6 +76,49 @@ main#main form .buttons a {
 main#main form .buttons a:hover, main#main form .buttons a:focus {
   background-color: white;
   color: var(--clr-bg);
+}
+@media (max-width: 768px) {
+  main#main form {
+    padding: 1em 2em;
+  }
+  main#main form .title {
+    font-size: 1.75rem;
+    width: 100%;
+  }
+  main#main form .input-id {
+    width: 100%;
+    align-items: flex-start !important;
+    flex-direction: column;
+  }
+  main#main form .input-id label {
+    display: block;
+    font-size: 1.7rem;
+  }
+  main#main form .input-id #doujin-input {
+    text-align: center;
+    font-size: 1.65rem;
+    width: 100%;
+  }
+  main#main form .input-id::before {
+    --x: 50%;
+    --y: -40%;
+    opacity: 0.3;
+    right: 50%;
+  }
+  main#main form .buttons {
+    width: 100%;
+    gap: 0.5em;
+    flex-direction: column-reverse;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  main#main form .buttons * {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    width: 100%;
+  }
+  main#main form .buttons a {
+    margin-left: 0;
+  }
 }
 
 /*# sourceMappingURL=home.css.map */
