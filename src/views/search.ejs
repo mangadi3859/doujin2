@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Keywords -->
+        <meta name="keywords" content="isladoujin, doujinisla, download doujin, nhentaidownloader" />
+        <link rel="stylesheet" href="/public/css/search.css" />
+        <%- include("components/_meta.ejs", { title: "Search Doujin", description: "Search doujin with queries" }) -%>
+    </head>
+    <body>
+        <%- include("components/_navbar.ejs", { title: "Search Doujin" }) -%>
+        <!-- <h1>Hello World</h1> -->
+        <main id="main">
+            <form action="/result" method="GET" class="position-relative d-flex flex-column justify-content-center align-items-center">
+                <div class="form-wrapper d-flex flex-column justify-content-center align-items-start">
+                    <h3 class="title">Search By Term</h3>
+                    <span class="input-id d-flex justify-content-center align-items-center">
+                        <label for="doujin-input" class="position-relative" aria-label>Query</label>
+                        <input aria-required="true" required type="text" name="query" id="doujin-input" class="position-relative" placeholder="Term" />
+                    </span>
+                    <div class="buttons d-flex align-items-center justify-content-end">
+                        <a href="/search/advance" class="btn btn-primary">Advance?</a>
+                        <button type="submit" class="btn btn-primary">SEARCH</button>
+                    </div>
+                </div>
+                <!-- <img src="/public/images/isla-gallery.png" class="input-bg position-absolute" /> -->
+            </form>
+        </main>
+        <%- include("components/_footer.ejs") -%>
+    </body>
+</html>

@@ -1,0 +1,170 @@
+main#main {
+    form {
+        --w: 100%;
+        position: relative;
+        padding-inline: 20%;
+        height: 80vh;
+        width: 100%;
+        margin: 0 !important;
+
+        .form-wrapper {
+            width: 100%;
+
+            .title {
+                font-size: 2.6rem;
+                min-width: var(--w);
+                margin-bottom: 1rem;
+                font-weight: 600;
+            }
+
+            .input-id {
+                --x: -20%;
+                --y: -50%;
+                position: relative;
+                font-size: 2.4rem;
+                min-width: var(--w);
+                gap: 0.2em;
+                // overflow-x: hidden;
+
+                &::before {
+                    content: "";
+                    aspect-ratio: 4 / 8;
+                    position: absolute;
+                    width: auto;
+                    height: 10em;
+                    right: 0;
+                    top: 35%;
+                    transform: translate(var(--x), var(--y));
+                    background-image: url(/public/images/isla-search-bg.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    opacity: 0.75;
+                    pointer-events: none;
+                }
+
+                label {
+                    margin: 0;
+                }
+
+                #doujin-input {
+                    font-size: 2rem;
+                    flex-grow: 1;
+                    border: 0;
+                    outline: 0;
+                    width: auto;
+                    padding-inline: 0.5em;
+                    padding-block: 0;
+                    border-radius: 0.75rem;
+                    border: 0.1em solid var(--clr-bg);
+                    color: var(--clr-bg);
+                    // background: none;
+
+                    &:focus {
+                        background-color: #ccc;
+                    }
+                }
+            }
+
+            .buttons {
+                margin-top: 1em;
+                margin-left: auto;
+                position: relative;
+                width: 55%;
+                // background-color: grey;
+                gap: 1.5em;
+
+                * {
+                    font-size: 1.125rem;
+                    position: relative;
+                    border-radius: 10rem;
+                    border: 2px solid white;
+                    letter-spacing: 2px;
+                    padding: 0.5em 1.5em;
+                    transition: 0.2s ease-in;
+                }
+
+                button {
+                    background-color: var(--clr-primary);
+                    border-color: black;
+
+                    &:hover,
+                    &:focus {
+                        background-color: var(--clr-primary-300);
+                    }
+                }
+
+                a {
+                    margin-left: auto;
+                    text-decoration: underline;
+                    border: none;
+                    background: transparent;
+                    color: rgba(var(--clr-bg));
+                    opacity: 0.45;
+
+                    &:hover,
+                    &:focus {
+                        opacity: 0.75;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        form {
+            padding: 1em 2em;
+            padding-inline: 5%;
+
+            .form-wrapper {
+                width: 100%;
+
+                .title {
+                    font-size: 1.75rem;
+                    width: 100%;
+                    margin-bottom: 0;
+                }
+
+                .input-id {
+                    width: 100%;
+                    align-items: flex-start !important;
+                    flex-direction: column;
+
+                    label {
+                        display: block;
+                        font-size: 1.7rem;
+                    }
+
+                    #doujin-input {
+                        text-align: center;
+                        font-size: 1.65rem;
+                        width: 100%;
+                    }
+
+                    &::before {
+                        --x: 50%;
+                        --y: -40%;
+                        opacity: 0.125;
+                        right: 50%;
+                    }
+                }
+
+                .buttons {
+                    width: 100%;
+                    gap: 0.5em;
+                    flex-direction: column-reverse;
+                    justify-content: center !important;
+                    align-items: center !important;
+
+                    * {
+                        font-size: clamp(0.9rem, 3vw, 1rem);
+                        width: 100%;
+                    }
+
+                    a {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

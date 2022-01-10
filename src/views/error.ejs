@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="/public/css/error.css" />
+        <%- include("components/_meta.ejs", { title: locals.error || "Error 404", description: locals.description || "Page Not Found" }) -%>
+    </head>
+    <body>
+        <%- include("components/_navbar.ejs", { title: locals.title || "Error 404" }) -%>
+        <main id="main" class="d-flex justify-content-center align-items-center position-relative flex-column">
+            <img src="/public//images/isla-404-bg.png" class="isla-error position-absolute" />
+            <div class="error position-relative">
+                <h1 class="error-head position-relative"><% let title = locals.error || "Error 404" %> <% title = title.replace(/ +.+$/, (t) => { %> <% return `<b>${t}</b>` %> <% }) %> <%- title %></h1>
+                <p class="error-message position-relative"><%= locals.message || "Page Not Found" %></p>
+            </div>
+            <a href="/" class="back mt-4 position-relative fw-bold">Back</a>
+        </main>
+        <%- include("components/_footer.ejs") -%>
+    </body>
+</html>

@@ -22,7 +22,7 @@ app.use("/public", express.static(ROOT));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//Router
+//Routers
 app.get("/public", (req, res) => {
     res.sendStatus(403);
 });
@@ -35,9 +35,13 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+app.get("/search", (req, res) => {
+    res.render("search");
+});
+
 //Fallback
 app.use((req, res) => {
-    res.sendStatus(404);
+    res.status(404).render("error", { error: "Error 404", title: "Error 404", message: "Page Not Found" });
 });
 
 //Run

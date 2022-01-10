@@ -32,6 +32,7 @@ main#main {
                 background-size: contain;
                 background-repeat: no-repeat;
                 opacity: 0.75;
+                pointer-events: none;
             }
 
             label {
@@ -123,7 +124,7 @@ main#main {
                 &::before {
                     --x: 50%;
                     --y: -40%;
-                    opacity: 0.3;
+                    opacity: 0.125;
                     right: 50%;
                 }
             }
