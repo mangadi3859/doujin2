@@ -1,0 +1,122 @@
+main#main {
+    .doujin {
+        width: 85%;
+        padding: 1em 1.5em;
+
+        hr {
+            width: 80%;
+            // height: 3px;
+            background-color: var(--light);
+            margin-bottom: 1.2em;
+        }
+
+        .doujin-container {
+            gap: 1.5em;
+
+            .doujin-thumb {
+                max-width: 45%;
+                height: auto;
+                border-radius: 0.2rem;
+                border: 5px solid white;
+            }
+
+            .doujin-title {
+                text-align: center;
+                font-size: 2.5rem;
+
+                strong {
+                    color: rgba(#777, 0.65);
+                }
+            }
+
+            .doujin-info {
+                font-size: 1.35rem;
+                display: flex;
+                // flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1em;
+                width: 100%;
+                // table {
+                //     display: block;
+                // }
+
+                table {
+                    border-spacing: 0.65em 0;
+                    // border-spacing: auto 0;
+                    border-collapse: separate;
+                    width: 100%;
+                    padding: 1em 0;
+
+                    td {
+                        .doujin-tags-data {
+                            // font-family: Arial;
+                            letter-spacing: 1.125px;
+                            font-weight: 300;
+                        }
+                    }
+                }
+            }
+        }
+        .download {
+            width: 100%;
+            margin-block: 3em;
+
+            .download-btn {
+                font-size: 1.5rem;
+                padding: 0.3em 0.75em;
+                color: white;
+                background-color: var(--clr-primary);
+                border-radius: 10rem;
+                letter-spacing: 2px;
+                transition: 0.2s ease-in-out;
+
+                &:hover,
+                &:focus {
+                    background-color: var(--clr-primary-200);
+                }
+            }
+        }
+    }
+
+    @media (max-width: 767px) {
+        .doujin {
+            .doujin-container {
+                .doujin-thumb {
+                    max-width: 90%;
+                }
+
+                .doujin-title {
+                    font-size: clamp(1rem, 4vw, 1.45rem);
+                }
+
+                .doujin-info {
+                    font-size: clamp(0.8rem, 4vw, 1.125rem);
+
+                    table {
+                        border-spacing: 0.45em 0;
+                        // border-spacing: auto 0;
+
+                        td {
+                            .doujin-tags-data {
+                                // font-family: Arial;
+                                letter-spacing: 1px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .download {
+                margin-block: 2rem;
+
+                .download-btn {
+                    font-size: clamp(0.9rem, 4vw, 1rem);
+                    width: 100%;
+                    padding: 0.65em 1.2em;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

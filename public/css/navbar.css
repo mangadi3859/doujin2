@@ -86,6 +86,7 @@ body.active {
 }
 .header-wrapper .hero-isla-bg header#hero .hero-body .header-title {
   font-size: clamp(0.9rem, 5vw, 1.75rem);
+  text-align: center;
 }
 .header-wrapper .hero-isla-bg header#hero .hero-body .github-link {
   font-weight: 600;

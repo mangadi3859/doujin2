@@ -1,0 +1,87 @@
+main#main .doujin {
+  width: 85%;
+  padding: 1em 1.5em;
+}
+main#main .doujin hr {
+  width: 80%;
+  background-color: var(--light);
+  margin-bottom: 1.2em;
+}
+main#main .doujin .doujin-container {
+  gap: 1.5em;
+}
+main#main .doujin .doujin-container .doujin-thumb {
+  max-width: 45%;
+  height: auto;
+  border-radius: 0.2rem;
+  border: 5px solid white;
+}
+main#main .doujin .doujin-container .doujin-title {
+  text-align: center;
+  font-size: 2.5rem;
+}
+main#main .doujin .doujin-container .doujin-title strong {
+  color: rgba(119, 119, 119, 0.65);
+}
+main#main .doujin .doujin-container .doujin-info {
+  font-size: 1.35rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+}
+main#main .doujin .doujin-container .doujin-info table {
+  border-spacing: 0.65em 0;
+  border-collapse: separate;
+  width: 100%;
+  padding: 1em 0;
+}
+main#main .doujin .doujin-container .doujin-info table td .doujin-tags-data {
+  letter-spacing: 1.125px;
+  font-weight: 300;
+}
+main#main .doujin .download {
+  width: 100%;
+  margin-block: 3em;
+}
+main#main .doujin .download .download-btn {
+  font-size: 1.5rem;
+  padding: 0.3em 0.75em;
+  color: white;
+  background-color: var(--clr-primary);
+  border-radius: 10rem;
+  letter-spacing: 2px;
+  transition: 0.2s ease-in-out;
+}
+main#main .doujin .download .download-btn:hover, main#main .doujin .download .download-btn:focus {
+  background-color: var(--clr-primary-200);
+}
+@media (max-width: 767px) {
+  main#main .doujin .doujin-container .doujin-thumb {
+    max-width: 90%;
+  }
+  main#main .doujin .doujin-container .doujin-title {
+    font-size: clamp(1rem, 4vw, 1.45rem);
+  }
+  main#main .doujin .doujin-container .doujin-info {
+    font-size: clamp(0.8rem, 4vw, 1.125rem);
+  }
+  main#main .doujin .doujin-container .doujin-info table {
+    border-spacing: 0.45em 0;
+  }
+  main#main .doujin .doujin-container .doujin-info table td .doujin-tags-data {
+    letter-spacing: 1px;
+  }
+  main#main .doujin .download {
+    margin-block: 2rem;
+  }
+  main#main .doujin .download .download-btn {
+    font-size: clamp(0.9rem, 4vw, 1rem);
+    width: 100%;
+    padding: 0.65em 1.2em;
+    font-weight: bold;
+  }
+}
+
+/*# sourceMappingURL=download.css.map */
