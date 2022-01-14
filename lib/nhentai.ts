@@ -38,7 +38,7 @@ interface IImages {
 type TagType = "parody" | "category" | "language" | "tag" | "character" | "group" | "artist";
 
 interface ITag {
-    d: number;
+    id: number;
     type: TagType;
     name: string;
     url: string;
