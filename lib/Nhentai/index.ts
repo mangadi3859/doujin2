@@ -75,6 +75,7 @@ export async function download(id: string, destination: Readable): Promise<void>
         return doc.asBuffer();
     });
 
+    //WOI
     let meta = { author: "isla", creator: "isla", subject: "Doujin", title: folder };
     let pdf = new Pdf.Document({ properties: meta, font: null });
     pdf.pipe(destination, { end: true });
