@@ -4,10 +4,10 @@
     "description": "A web application to download doujin from nhentai.net",
     "main": "server.ts",
     "scripts": {
+        "heroku-prebuild": "npm install  --force",
         "start": "ts-node server.ts",
         "dev": "nodemon server.ts",
-        "dev-css": "sass ./src/sass:./public/css --watch",
-        "heroku-prebuild": "npm i"
+        "dev-css": "sass ./src/sass:./public/css --watch"
     },
     "keywords": [
         "doujin",
