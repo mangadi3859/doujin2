@@ -6,7 +6,8 @@ import { join as pathJoin } from "path";
 import { config } from "dotenv";
 
 //Module
-import { search } from "./lib/nhentai";
+import ApiRouter from "./route/api";
+import { search, Utils } from "./lib/Nhentai";
 
 //Constants
 config();
@@ -24,6 +25,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Routers
+app.use("/api", ApiRouter);
+
 app.get("/public", (req, res) => {
     res.sendStatus(403);
 });
@@ -46,6 +49,7 @@ app.get("/download", async (req, res) => {
     // console.log(id);
     let doujin = await search(<string>id);
     // console.log(doujin);
+
     if (!doujin?.id) return res.status(404).render("error", { error: "Error 404", title: "Error 404", message: "Doujin Not Found", description: "Doujin Not Found" });
 
     let thumb64 = await axios.get(`https://i2.nhentai.net/galleries/${doujin.media_id}/1.${doujin.images.pages[0].t === "j" ? "jpg" : "png"}`, { responseType: "arraybuffer" });
@@ -72,3 +76,13 @@ app.use((req, res) => {
 
 //Run
 app.listen(PORT, () => console.log(`App is on port: ${PORT}`));
+
+//Declare
+declare global {
+    namespace Express {
+        interface Request {
+            [key: string]: any;
+            relatedDoujin: Utils.NhentaiRelatedResponse;
+        }
+    }
+}

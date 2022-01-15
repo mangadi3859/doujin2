@@ -3,95 +3,10 @@ import Pdf from "pdfjs";
 import jimp from "jimp";
 // import superAgent from "superagent";
 // import agentProxy from "superagent-proxy";
+import * as Utils from "./utils";
 import { Readable } from "stream";
 
 // agentProxy(superAgent);
-
-const INFORMATION_FILE = `This is Doujin Downloader made by I S L A\n\nYou Can also use my web to download doujin too...\n\n(https://isla-doujin.herokuapp.com)`;
-
-/**
- * https://nhentai.net/api/gallery/${id}
- * https://i.nhentai.net/galleries/${res.data.media_id}/${i + 1}.jpg
- * https://i2.nhentai.net/galleries/${res.data.media_id}/${i + 1}.png
- */
-
-interface IDoujinTitle {
-    english: string;
-    japanese: string;
-    pretty: string;
-}
-
-type PageExt = "p" | "j";
-
-interface IPage {
-    t: PageExt;
-    w: number;
-    h: number;
-}
-
-interface IImages {
-    pages: IPage[];
-    cover: IPage;
-    thumbnail: IPage;
-}
-
-type TagType = "parody" | "category" | "language" | "tag" | "character" | "group" | "artist";
-
-interface ITag {
-    d: number;
-    type: TagType;
-    name: string;
-    url: string;
-    count: number;
-}
-
-export interface INhentaiResponse {
-    id: number;
-    media_id: string;
-    title: IDoujinTitle;
-    images: IImages;
-    scanlator?: string;
-    upload_date: number;
-    tags: ITag[];
-    num_pages: number;
-    num_favorites: number;
-}
-
-class NhentaiResponse {
-    id: number;
-    media_id: string;
-    title: IDoujinTitle;
-    images: IImages;
-    scanlator?: string;
-    upload_date: number;
-    tags: ITag[];
-    parodies: ITag[];
-    characters: ITag[];
-    artists: ITag[];
-    groups: ITag[];
-    languages: ITag[];
-    categories: ITag[];
-    num_pages: number;
-    num_favorites: number;
-
-    constructor(private readonly _nhentai: INhentaiResponse) {
-        this.id = _nhentai.id;
-        this.media_id = _nhentai.media_id;
-        this.title = _nhentai.title;
-        this.images = _nhentai.images;
-        this.scanlator = _nhentai.scanlator;
-        this.upload_date = _nhentai.upload_date;
-        this.tags = _nhentai.tags.filter((f) => f.type === "tag");
-        this.parodies = _nhentai.tags.filter((f) => f.type === "parody");
-        this.characters = _nhentai.tags.filter((f) => f.type === "character");
-        this.artists = _nhentai.tags.filter((f) => f.type === "artist");
-        this.groups = _nhentai.tags.filter((f) => f.type === "group");
-        this.languages = _nhentai.tags.filter((f) => f.type === "language");
-        this.categories = _nhentai.tags.filter((f) => f.type === "category");
-        this.num_pages = _nhentai.num_pages;
-        this.num_favorites = _nhentai.num_favorites;
-    }
-}
 
 /** Search Doujin from nhentai.net
  *
@@ -99,7 +14,7 @@ class NhentaiResponse {
  * @returns
  *
  */
-export async function search(id: string): Promise<NhentaiResponse> {
+export async function search(id: string): Promise<Utils.NhentaiResponse> {
     if (!id) throw new TypeError("id is required");
     const regex = new RegExp(/^((?:https?:\/\/|www\.)?nhentai\.net\/g\/)?(\d+)/, "i");
     const code = id.match(regex);
@@ -109,9 +24,9 @@ export async function search(id: string): Promise<NhentaiResponse> {
     // https://nhentai.net/api/gallery/${id}/
     // let res = <any>await superAgent.get(`https://nhentai.net/api/gallery/${id}`).catch(console.error);
 
-    let res = <AxiosResponse<INhentaiResponse>>await axios.get(`https://nhentai.net/api/gallery/${id}`).catch((e) => console.log(e.toString()));
+    let res = <AxiosResponse<Utils.INhentaiResponse>>await axios.get(`https://nhentai.net/api/gallery/${id}`).catch((e) => console.log(e.toString()));
 
-    return res?.data ? new NhentaiResponse(res.data) : null;
+    return res?.data ? new Utils.NhentaiResponse(res.data) : null;
     // return res?.body ? new NhentaiResponse(res.body) : null;
 }
 
@@ -128,7 +43,7 @@ export async function download(id: string, destination: Readable): Promise<void>
 
     if (!code) throw new TypeError("Invalid id");
     id = id.replace(regex, "$2");
-    let res = (await axios.get<INhentaiResponse>("https://nhentai.net/api/gallery/" + id)).data;
+    let res = (await axios.get<Utils.INhentaiResponse>("https://nhentai.net/api/gallery/" + id)).data;
 
     if (!res || !res.images) throw new Error("Doujin not found");
     const folder = `[ISLA-DOUJIN] ${res.title.pretty} (${res.id})`;
@@ -165,7 +80,7 @@ export async function download(id: string, destination: Readable): Promise<void>
     pdf.pipe(destination, { end: true });
     let resolve = await Promise.all(promises);
 
-    pdf.text(INFORMATION_FILE);
+    pdf.text(Utils.INFORMATION_FILE);
     resolve.forEach((buffer, index) => {
         if (!buffer) return;
         let image = new Pdf.ExternalDocument(buffer);
@@ -178,8 +93,34 @@ export async function download(id: string, destination: Readable): Promise<void>
     return;
 }
 
-declare global {
-    interface SuperAgentStatic {
-        proxy(host: string);
+export function query(query: Object, options?: Utils.IQueryOptions): Promise<Utils.NhentaiQueryResponse>;
+export function query(query: string, options?: Utils.IQueryOptions): Promise<Utils.NhentaiQueryResponse>;
+export async function query(query: any, options: Utils.IQueryOptions = {}): Promise<Utils.NhentaiQueryResponse> {
+    switch (typeof query) {
+        case "string": {
+            var data = query;
+            break;
+        }
+
+        case "object": {
+            var data = encodeURIComponent(
+                Object.keys(query)
+                    .map((obj) => `${obj}:"${query[obj]}"`)
+                    .join(" "),
+            );
+        }
     }
+
+    let params = new URLSearchParams([["query", data], ...Object.keys(options).map((e) => [e, options[e]])]);
+    let res = await axios.get<Utils.INhentaiQueryResponse>(`https://nhentai.net/api/galleries/search${params.toString()}`).catch(() => null);
+
+    return new Utils.NhentaiQueryResponse(res.data) || null;
 }
+
+export async function getRelated(id: number | string): Promise<Utils.NhentaiRelatedResponse> {
+    let res = await axios.get<Utils.INhentaiRelatedResponse>(`https://nhentai.net/api/gallery/${id}/related`).catch(() => null);
+
+    return res?.data ? new Utils.NhentaiRelatedResponse(res.data) : null;
+}
+
+export { Utils };

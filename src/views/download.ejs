@@ -4,8 +4,9 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/public/css/download.css" />
         <%- include("components/_meta.ejs", { title: locals.id.toString() , description: "Download your doujin" }) -%>
+        <link rel="stylesheet" href="/public/css/download.css" />
+        <script src="/public/script/download.js" defer></script>
     </head>
     <body>
         <%- include("components/_navbar.ejs", { title: "Doujin Result" || "Error 404" }) -%>
@@ -21,7 +22,7 @@
                         <table>
                             <tr>
                                 <td class="doujin-tags">Parodies:</td>
-                                <td>
+                                <td data-tag-value>
                                     <% locals.parodies.forEach((e) => { %>
                                     <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
@@ -29,7 +30,7 @@
                             </tr>
                             <tr>
                                 <td class="doujin-tags">Tags:</td>
-                                <td>
+                                <td data-tag-value>
                                     <% locals.tags.forEach((e) => { %>
                                     <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
@@ -37,7 +38,7 @@
                             </tr>
                             <tr>
                                 <td class="doujin-tags">Characters:</td>
-                                <td>
+                                <td data-tag-value>
                                     <% locals.characters.forEach((e) => { %>
                                     <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
@@ -45,7 +46,7 @@
                             </tr>
                             <tr>
                                 <td class="doujin-tags">Artists:</td>
-                                <td>
+                                <td data-tag-value>
                                     <% locals.artists.forEach((e) => { %>
                                     <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
@@ -53,7 +54,7 @@
                             </tr>
                             <tr>
                                 <td class="doujin-tags">Groups:</td>
-                                <td>
+                                <td data-tag-value>
                                     <% locals.groups.forEach((e) => { %>
                                     <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
@@ -61,7 +62,7 @@
                             </tr>
                             <tr>
                                 <td class="doujin-tags">Languages:</td>
-                                <td>
+                                <td data-tag-value>
                                     <% locals.languages.forEach((e) => { %>
                                     <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
@@ -69,7 +70,7 @@
                             </tr>
                             <tr>
                                 <td class="doujin-tags">Categories:</td>
-                                <td>
+                                <td data-tag-value>
                                     <% locals.categories.forEach((e) => { %>
                                     <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
@@ -83,11 +84,23 @@
                     </div>
                 </div>
                 <form action="/download/action" method="POST" class="download">
-                    <input type="text" class="hidden" required value="<%= locals.id %>" aria-hidden="true" hidden />
+                    <input data-doujin-id type="text" class="hidden" required value="<%= locals.id %>" aria-hidden="true" hidden />
                     <button type="submit" class="btn download-btn">DOWNLOAD</button>
                 </form>
             </div>
-            <div class="related-doujin"></div>
+            <div class="related-doujin d-flex flex-column justify-content-center align-items-center">
+                <h1 class="title">Related Doujin</h1>
+                <hr />
+                <br />
+                <div class="doujin-container" data-doujins>
+                    <template data-doujin-template>
+                        <a href="" class="card d-flex flex-column justify-content-between align-items-center">
+                            <img src="" data-card-cover />
+                            <p data-card-title></p>
+                        </a>
+                    </template>
+                </div>
+            </div>
         </main>
         <%- include("components/_footer.ejs") -%>
     </body>
