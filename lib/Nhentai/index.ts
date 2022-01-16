@@ -4,7 +4,7 @@ import jimp from "jimp";
 // import superAgent from "superagent";
 // import agentProxy from "superagent-proxy";
 import * as Utils from "./utils";
-import { Readable } from "stream";
+import { Writable } from "stream";
 
 // agentProxy(superAgent);
 
@@ -34,7 +34,7 @@ export async function search(id: string): Promise<Utils.NhentaiResponse> {
  *
  * @param {string} id - nhentai id
  */
-export async function download(id: string, destination: Readable): Promise<void> {
+export async function download(id: string, destination: Writable): Promise<void> {
     if (!id) throw new TypeError("id is required");
     id = id.toString();
     // const zip = new JsZip();
@@ -62,7 +62,7 @@ export async function download(id: string, destination: Readable): Promise<void>
             case "p": {
                 let img = await jimp.read(`https://i2.nhentai.net/galleries/${res.media_id}/${i + 1}.png`);
 
-                var buf = <any>await img.getBufferAsync("image/jpeg");
+                var buf: any = { data: <any>await img.getBufferAsync("image/jpeg") };
                 break;
             }
         }

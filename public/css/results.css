@@ -24,9 +24,25 @@ main#main .doujin .doujin-container {
   grid-auto-rows: max-content;
   grid-gap: 1em;
 }
+main#main .doujin .doujin-container .page-separator {
+  grid-column: 1/-1;
+  gap: 1em;
+}
+main#main .doujin .doujin-container .page-separator hr {
+  width: 90%;
+  background-color: white;
+  opacity: 0.3;
+}
+main#main .doujin .doujin-container .page-separator .page-separator-text {
+  flex-grow: 1;
+  color: white;
+  font-size: 1.4rem;
+  width: auto;
+  text-align: center;
+}
 main#main .doujin .doujin-container .card {
   width: 100%;
-  height: 100%;
+  min-height: 10em;
   padding: 0.5em;
   background-color: var(--dark);
   color: rgba(255, 255, 255, 0.7);
@@ -44,7 +60,7 @@ main#main .doujin .doujin-container .card .card-lang {
   text-transform: uppercase;
   right: -1px;
   letter-spacing: 1.5px;
-  bottom: 30%;
+  bottom: 10%;
   font-size: clamp(0.7rem, 2.5vw, 1rem);
   padding: 0.35em 0.65em;
   background-color: rgba(31, 31, 31, 0.8);
@@ -62,6 +78,7 @@ main#main .doujin .doujin-container .card p {
   white-space: nowrap;
   margin-block: auto 1em;
   z-index: 10;
+  transition: 0.3s ease;
 }
 main#main .doujin .doujin-container .card:hover p, main#main .doujin .doujin-container .card:focus p {
   white-space: normal;
@@ -82,16 +99,32 @@ main#main .doujin .doujin-nav {
   background-color: rgba(63, 63, 63, 0.3);
   border-radius: 0.5em;
   padding: var(--padding-y);
+  gap: 1em;
 }
 main#main .doujin .doujin-nav .sort-text {
-  margin-bottom: 0.8em;
   font-weight: bold;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+}
+main#main .doujin .doujin-nav .sort-info {
+  margin-block: 0.8em;
+  font-weight: bold;
+  font-size: 1rem;
+}
+main#main .doujin .doujin-nav .sort-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--padding-y);
 }
 main#main .doujin .doujin-nav .sort-list a {
+  display: block;
+  flex-grow: 1;
+  min-width: 10rem;
   position: relative;
   color: rgba(255, 255, 255, 0.7);
-  padding: 0.3em 1em;
+  font-size: 1rem;
+  padding: 0.65em 1.5em;
   text-decoration: none;
   transition: 0.3s ease-in-out;
 }
@@ -108,14 +141,23 @@ main#main .doujin .doujin-nav .sort-list a::after {
   transition: 0.3s ease-in-out;
   pointer-events: none;
 }
-main#main .doujin .doujin-nav .sort-list a:hover, main#main .doujin .doujin-nav .sort-list a.active {
+main#main .doujin .doujin-nav .sort-list a:hover, main#main .doujin .doujin-nav .sort-list a:focus, main#main .doujin .doujin-nav .sort-list a.active {
+  background-color: rgba(224, 224, 224, 0.2);
   color: white;
 }
-main#main .doujin .doujin-nav .sort-list a:hover::after, main#main .doujin .doujin-nav .sort-list a.active::after {
-  transform: scale(1);
+main#main .doujin .doujin-nav .sort-list a:hover::after, main#main .doujin .doujin-nav .sort-list a:focus::after, main#main .doujin .doujin-nav .sort-list a.active::after {
+  transform: scaleX(1);
 }
 main#main .doujin .btn-add {
+  margin-top: 5rem;
+  color: rgba(224, 224, 224, 0.65);
+}
+main#main .doujin .btn-add span {
+  margin-right: 0.5em;
+}
+main#main .doujin .btn-add:hover, main#main .doujin .btn-add:focus {
   color: var(--clr-primary);
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=results.css.map */

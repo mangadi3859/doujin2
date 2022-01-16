@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <%- include("components/_meta.ejs", { title: "Query Results", description: "Download your doujin here" }) -%>
         <link rel="stylesheet" href="/public/css/results.css" />
-        <!-- <script src="/public/script/results.js" defer></script> -->
+        <script src="/public/script/results.js" type="module" defer></script>
     </head>
     <body>
         <%- include("components/_navbar.ejs", { title: "Query Results" }) -%>
@@ -16,34 +16,48 @@
                 <hr />
                 <div class="doujin-nav d-flex flex-column justify-content-center align-items-center">
                     <p class="sort-text">Sort by:</p>
-                    <div class="sort-list d-flex justify-content-around align-items-center w-100">
-                        <% let query = locals.query || {} %>
-                        <a data-sort="recent" href="<%= `/search/results?${new URLSearchParams([...Object.keys(query).map(e => [e, query[e]]), ["sort", ""]]).toString()}` %>">Recent</a>
-                        <a data-sort="popular-today" href="<%= `/search/results?${new URLSearchParams([...Object.keys(query).map(e => [e, query[e]]), ["sort", "popular-today"]]).toString()}` %>">Popular Today</a>
-                        <a data-sort="popular-week" href="<%= `/search/results?${new URLSearchParams([...Object.keys(query).map(e => [e, query[e]]), ["sort", "popular-week"]]).toString()}` %>">Popular This Week</a>
-                        <a data-sort="popular" href="<%= `/search/results?${new URLSearchParams([...Object.keys(query).map(e => [e, query[e]]), ["sort", "popular"]]).toString()}` %>">Most Popular</a>
+                    <% let query = locals.query || {} %>
+                    <div class="sort-list w-100">
+                        <a class="badge" data-sort="recent" href="<%= `/search/results?${new URLSearchParams([...Object.keys(query).filter(e => e === "query").map(e => [e, query[e]]), ["sort", ""]]).toString()}` %>">Recent</a>
+                    </div>
+                    <p class="sort-info">Popular:</p>
+                    <div class="sort-list w-100">
+                        <a class="badge" data-sort="popular-today" href="<%= `/search/results?${new URLSearchParams([...Object.keys(query).filter(e => e === "query").map(e => [e, query[e]]), ["sort", "popular-today"]]).toString()}` %>">Today</a>
+                        <a class="badge" data-sort="popular-week" href="<%= `/search/results?${new URLSearchParams([...Object.keys(query).filter(e => e === "query").map(e => [e, query[e]]), ["sort", "popular-week"]]).toString()}` %>">Week</a>
+                        <a class="badge" data-sort="popular" href="<%= `/search/results?${new URLSearchParams([...Object.keys(query).filter(e => e === "query").map(e => [e, query[e]]), ["sort", "popular"]]).toString()}` %>">Most</a>
                     </div>
                 </div>
                 <br />
-                <div class="doujin-container" data-doujins="1">
+                <div class="doujin-container" data-doujins="1" data-page >
                     <template data-doujin-template>
                         <a href="" class="card d-flex flex-column justify-content-around align-items-center position-relative">
-                            <span class="position-absolute card-lang" data-card-language></span>
-                            <img src="" data-card-cover loading="lazy" />
-                            <p data-card-title></p>
+                            <div class="img-wrapper position-relative w-100 h-auto">
+                                <span class="position-absolute card-lang" data-card-language></span>
+                                <img src="" data-card-cover loading="lazy" />
+                            </div>
+                                <p data-card-title></p>
                         </a>
+                    </template>
+                    <template data-separator-template>
+                        <div class="page-separator d-flex justify-content-between align-items-center w-100">
+                            <hr>
+                            <p class="page-separator-text" data-separator-text></p>
+                            <hr>
+                        </div>
                     </template>
                     
                     <% locals.doujin.result.forEach(e => { %>
                         <a href="<%= `/download?id=${e.id}` %>" class="card d-flex flex-column justify-content-around align-items-center position-relative">
-                            <span class="position-absolute card-lang" data-card-language><%= e.languages.filter((e) => e.name !== "translated")[0]?.name || "??" %></span>
-                            <img src="<%= `/api/thumbnail/${e.media_id}/${e.images.cover.t === "j" ? "jpg" : "png"}` %>" data-card-cover loading="lazy" />
+                            <div class="img-wrapper position-relative w-100 h-auto">
+                                <span class="position-absolute card-lang" data-card-language><%= e.languages.filter((e) => e.name !== "translated")[0]?.name || "??" %></span>
+                                <img src="<%= `/api/thumbnail/${e.media_id}/${e.images.cover.t === "j" ? "jpg" : "png"}` %>" data-card-cover loading="lazy" />
+                            </div>
                             <p data-card-title><%= `${e.title.pretty}` %></p>
                         </a>
                     <%}) %>
                 </div>
                 <botton data-add class="btn btn-add">
-                    Load More
+                    <span class="fas fa-link"></span> Load More
                 </botton>
             </div>
         </main>

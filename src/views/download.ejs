@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <form action="/download/action" method="POST" class="download">
-                    <input data-doujin-id type="text" class="hidden" required value="<%= locals.id %>" aria-hidden="true" hidden />
+                    <input name="id" data-doujin-id type="text" class="hidden" required value="<%= locals.id %>" aria-hidden="true" hidden />
                     <button type="submit" class="btn download-btn">DOWNLOAD</button>
                 </form>
             </div>
@@ -95,8 +95,10 @@
                 <div class="doujin-container" data-doujins>
                     <template data-doujin-template>
                         <a href="" class="card d-flex flex-column justify-content-around align-items-center position-relative">
-                            <span class="position-absolute card-lang" data-card-language></span>
-                            <img src="" data-card-cover loading="lazy" />
+                            <div class="img-wrapper position-relative w-100 h-auto">
+                                <span class="position-absolute card-lang" data-card-language></span>
+                                <img src="" data-card-cover loading="lazy" />
+                            </div>
                             <p data-card-title></p>
                         </a>
                     </template>

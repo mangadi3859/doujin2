@@ -155,7 +155,8 @@ main#main {
             .card {
                 width: 100%;
                 // aspect-ratio: 1 / 2;
-                height: 100%;
+                min-height: 10em;
+                // height: min-content;
                 padding: 0.5em;
                 background-color: var(--dark);
                 color: rgba(white, 0.7);
@@ -175,7 +176,7 @@ main#main {
                     text-transform: uppercase;
                     right: -1px;
                     letter-spacing: 1.5px;
-                    bottom: 30%;
+                    bottom: 10%;
                     font-size: clamp(0.7rem, 2.5vw, 1rem);
                     padding: 0.35em 0.65em;
                     background-color: rgba(#1f1f1f, 0.8);
@@ -195,6 +196,7 @@ main#main {
                     white-space: nowrap;
                     margin-block: auto 1em;
                     z-index: 10;
+                    transition: 0.3s ease;
                 }
 
                 &:hover,

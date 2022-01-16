@@ -1,5 +1,5 @@
 import express, { Request, NextFunction, Response } from "express";
-import { search, Utils } from "../lib/Nhentai";
+import { search, download, Utils } from "../lib/Nhentai";
 
 // Path /api
 const router = express.Router();
@@ -29,8 +29,25 @@ router.get("/", async (req, res) => {
     });
 });
 
-router.post("/action", async (req, res) => {
-    console.log(req.body);
+router.post("/action", checkData, (req, res) => {
+    res.attachment(`[ISLA-DOUJIN] ${req.nhentai.title} - (${req.nhentai.id}).pdf`);
+    res.set("Content-Type", "file/pdf");
+
+    download(req.nhentai.id, res).catch((err) => {
+        console.error(err);
+    });
 });
+
+async function checkData(req, res, next) {
+    const { id } = req.body;
+    try {
+        let res = await search(id);
+        req.nhentai = { id: res.id, title: res.title.pretty.replace(/[^\w\s\d%.,\-?!+_]/g, "") };
+        return next();
+    } catch (err) {
+        console.error(err);
+        return res.status(500).render("error", { title: "Internal Server Error", error: "Error 500", message: "Internal Server Error", description: "Internal Server Error" });
+    }
+}
 
 export default router;
