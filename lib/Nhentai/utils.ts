@@ -1,4 +1,4 @@
-export const INFORMATION_FILE = `This is Doujin Downloader made by I S L A\n\nYou Can also use my web to download doujin too...\n\n(https://isla-doujin.herokuapp.com)`;
+export const INFORMATION_FILE = `This doujin is downloaded from \n\nhttps://isla-doujin.herokuapp.com\n\nCreated With 💗 by ISLA`;
 
 /**
  * https://nhentai.net/api/gallery/${id}
@@ -86,7 +86,7 @@ export class NhentaiResponse {
     }
 }
 
-type Popular = "popular" | "popular-week" | "popular-today" | "";
+export type Popular = "popular" | "popular-week" | "popular-today" | "";
 
 export interface IQueryOptions {
     sort?: Popular;

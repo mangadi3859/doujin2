@@ -1,12 +1,7 @@
-let table = $("[data-tag-value]");
-let related = $("[data-doujins");
 let templateDoujin = $("[data-doujin-template]")[0];
+let related = $("[data-doujins]");
 
-table.each((i, el) => {
-    !el.querySelector("a.badge") && (el.parentElement.hidden = true);
-});
-
-fetch(`/api/getRelated?id=${$("[data-doujin-id")[0].value}`)
+fetch(`/api/search/?id=${$("[data-doujin-id")[0].value}`)
     .then((r) => r.json())
     .then((res) => {
         res.result.forEach((e) => {
@@ -19,3 +14,5 @@ fetch(`/api/getRelated?id=${$("[data-doujin-id")[0].value}`)
         });
     })
     .catch(console.error);
+
+export {};

@@ -81,7 +81,7 @@ export async function download(id: string, destination: Readable): Promise<void>
     pdf.pipe(destination, { end: true });
     let resolve = await Promise.all(promises);
 
-    pdf.text(Utils.INFORMATION_FILE);
+    pdf.text(Utils.INFORMATION_FILE, { textAlign: "center", alignment: "center", link: "https://isla-doujin.herokuapp.com", color: 0x1f1f1f });
     resolve.forEach((buffer, index) => {
         if (!buffer) return;
         let image = new Pdf.ExternalDocument(buffer);
@@ -94,28 +94,12 @@ export async function download(id: string, destination: Readable): Promise<void>
     return;
 }
 
-export function query(query: Object, options?: Utils.IQueryOptions): Promise<Utils.NhentaiQueryResponse>;
-export function query(query: string, options?: Utils.IQueryOptions): Promise<Utils.NhentaiQueryResponse>;
-export async function query(query: any, options: Utils.IQueryOptions = {}): Promise<Utils.NhentaiQueryResponse> {
-    switch (typeof query) {
-        case "string": {
-            var data = query;
-            break;
-        }
-
-        case "object": {
-            var data = encodeURIComponent(
-                Object.keys(query)
-                    .map((obj) => `${obj}:"${query[obj]}"`)
-                    .join(" "),
-            );
-        }
-    }
-
+export async function query(query: string, options: Utils.IQueryOptions = {}): Promise<Utils.NhentaiQueryResponse> {
+    let data = query;
     let params = new URLSearchParams([["query", data], ...Object.keys(options).map((e) => [e, options[e]])]);
-    let res = await axios.get<Utils.INhentaiQueryResponse>(`https://nhentai.net/api/galleries/search${params.toString()}`).catch(() => null);
+    let res = await await axios.get<Utils.INhentaiQueryResponse>(`https://nhentai.net/api/galleries/search?${params.toString()}`).catch(() => null);
 
-    return new Utils.NhentaiQueryResponse(res.data) || null;
+    return res?.data ? new Utils.NhentaiQueryResponse(res.data) : null;
 }
 
 export async function getRelated(id: number | string): Promise<Utils.NhentaiRelatedResponse> {

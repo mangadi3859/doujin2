@@ -1,10 +1,16 @@
+:root {
+    --section-width: 95%;
+    --section-max-width: 60rem;
+}
+
 main#main {
     .doujin {
-        width: 85%;
+        width: var(--section-width);
+        max-width: var(--section-max-width);
         padding: 1em 1.5em;
 
         hr {
-            width: 80%;
+            width: 90%;
             // height: 3px;
             background-color: var(--light);
             margin-bottom: 1.2em;
@@ -120,22 +126,30 @@ main#main {
         }
     }
 
-    div.related-doujin {
-        width: 85%;
+    .related-doujin {
+        // width: 100%;
+        width: var(--section-width);
+        max-width: var(--section-max-width);
         padding: 1em 1.5em;
 
         hr {
-            width: 80%;
+            width: 90%;
             // height: 2px;
             background-color: var(--light);
             margin-bottom: 1.2em;
         }
 
+        .title {
+            font-size: clamp(1.75rem, 3vw + 1rem, 2.5rem);
+        }
+
         .doujin-container {
+            width: 100%;
             display: grid;
             place-items: center;
-            grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
             grid-auto-rows: max-content;
+            // align-items: center;
             grid-gap: 1em;
 
             .card {
@@ -154,14 +168,52 @@ main#main {
                     color: var(--clr-primary);
                 }
 
+                .card-lang {
+                    color: rgba(white, 0.75) !important;
+                    font-weight: 600;
+                    font-family: Arial;
+                    text-transform: uppercase;
+                    right: -1px;
+                    letter-spacing: 1.5px;
+                    bottom: 30%;
+                    font-size: clamp(0.7rem, 2.5vw, 1rem);
+                    padding: 0.35em 0.65em;
+                    background-color: rgba(#1f1f1f, 0.8);
+                    border-radius: 0.5em 0 0 0.5em;
+                }
+
                 img {
+                    margin-block: auto 1em;
                     width: 100%;
                     height: auto;
                 }
 
                 p {
-                    margin-block: 1em;
+                    overflow: hidden;
+                    width: 100%;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    margin-block: auto 1em;
                     z-index: 10;
+                }
+
+                &:hover,
+                &:focus {
+                    p {
+                        white-space: normal;
+                    }
+                }
+            }
+
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 0.5em;
+
+                .card {
+                    img,
+                    p {
+                        margin-block: auto 0.25em;
+                    }
                 }
             }
         }

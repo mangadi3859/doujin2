@@ -88,14 +88,15 @@
                     <button type="submit" class="btn download-btn">DOWNLOAD</button>
                 </form>
             </div>
-            <div class="related-doujin d-flex flex-column justify-content-center align-items-center">
+            <div class="related-doujin d-flex position-relative flex-column justify-content-center align-items-center">
                 <h1 class="title">Related Doujin</h1>
                 <hr />
                 <br />
                 <div class="doujin-container" data-doujins>
                     <template data-doujin-template>
-                        <a href="" class="card d-flex flex-column justify-content-between align-items-center">
-                            <img src="" data-card-cover />
+                        <a href="" class="card d-flex flex-column justify-content-around align-items-center position-relative">
+                            <span class="position-absolute card-lang" data-card-language></span>
+                            <img src="" data-card-cover loading="lazy" />
                             <p data-card-title></p>
                         </a>
                     </template>

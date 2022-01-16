@@ -43,6 +43,10 @@ body > * {
   max-width: 100%;
 }
 
+.btn {
+  box-shadow: none !important;
+}
+
 main {
   margin-top: 15vh;
   overflow-x: hidden;
