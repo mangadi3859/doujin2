@@ -62,7 +62,7 @@ export async function download(id: string, destination: Writable): Promise<void>
             case "p": {
                 let img = await jimp.read(`https://i2.nhentai.net/galleries/${res.media_id}/${i + 1}.png`);
 
-                var buf: any = { data: <any>await img.getBufferAsync("image/jpg") };
+                var buf: any = { data: <any>await img.getBufferAsync("image/jpeg") };
                 break;
             }
         }
