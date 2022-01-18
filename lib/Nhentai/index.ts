@@ -61,8 +61,9 @@ export async function download(id: string, destination: Writable): Promise<void>
 
             case "p": {
                 let img = await jimp.read(`https://i2.nhentai.net/galleries/${res.media_id}/${i + 1}.png`);
+                let imgBuf = await img.getBufferAsync("image/jpeg");
 
-                var buf: any = { data: <any>await img.getBufferAsync("image/jpeg") };
+                var buf: any = img && imgBuf ? { data: <any>imgBuf } : null;
                 break;
             }
         }
@@ -72,7 +73,7 @@ export async function download(id: string, destination: Writable): Promise<void>
         let doc = new Pdf.Document({ height: h, width: w, font: null });
         doc.image(new Pdf.Image(buf.data), { align: "center" });
 
-        return doc.asBuffer();
+        return await doc.asBuffer();
     });
 
     //WOI
