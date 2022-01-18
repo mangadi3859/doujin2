@@ -75,7 +75,7 @@ export async function download(id: string, destination: Writable): Promise<void>
 
         let resImage = await doc.asBuffer();
         //doc.end();
-        buf = null;
+        //buf = null;
         return resImage;
     });
 
