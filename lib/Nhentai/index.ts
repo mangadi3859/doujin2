@@ -74,7 +74,7 @@ export async function download(id: string, destination: Writable): Promise<void>
         doc.image(new Pdf.Image(buf.data), { align: "center" });
 
         let resImage = await doc.asBuffer();
-        doc.end();
+        //doc.end();
         return resImage;
     });
 
