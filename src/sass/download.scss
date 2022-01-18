@@ -1,5 +1,5 @@
 :root {
-    --section-width: 95%;
+    --section-width: 100%;
     --section-max-width: 60rem;
 }
 
@@ -7,7 +7,7 @@ main#main {
     .doujin {
         width: var(--section-width);
         max-width: var(--section-max-width);
-        padding: 1em 1.5em;
+        // padding: 1em 1.5em;
 
         hr {
             width: 90%;

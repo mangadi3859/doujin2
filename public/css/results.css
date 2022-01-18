@@ -1,12 +1,11 @@
 :root {
-  --section-width: 95%;
+  --section-width: 100%;
   --section-max-width: 60rem;
 }
 
 main#main .doujin {
   width: var(--section-width);
   max-width: var(--section-max-width);
-  padding: 1em 1.5em;
 }
 main#main .doujin hr {
   width: 90%;
@@ -158,6 +157,47 @@ main#main .doujin .btn-add span {
 main#main .doujin .btn-add:hover, main#main .doujin .btn-add:focus {
   color: var(--clr-primary);
   text-decoration: underline;
+}
+main#main .doujin .btn-add.limit {
+  color: rgba(224, 224, 224, 0.25);
+  text-decoration: none;
+  cursor: not-allowed;
+}
+main#main .doujin .page-count {
+  color: rgba(224, 224, 224, 0.45);
+  margin-top: 1em;
+}
+main#main .doujin .page-count span {
+  color: var(--clr-primary);
+}
+main#main .btn-down {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  margin: 1em;
+  color: white;
+  z-index: 1000;
+  background-color: var(--clr-primary);
+  border-radius: 100%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(200%);
+  transition: 0.4s;
+  transition-timing-function: ease-in;
+}
+main#main .btn-down:hover, main#main .btn-down:focus {
+  background-color: var(--clr-primary-300);
+}
+main#main .btn-down.active {
+  transform: translateY(0);
+  transition-timing-function: cubic-bezier(0, 0.54, 0.41, 2.01);
+}
+main#main .btn-down .fas {
+  padding: 0.3em;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  text-align: center;
 }
 
 /*# sourceMappingURL=results.css.map */

@@ -48,6 +48,7 @@ body > * {
 }
 
 main {
+  padding: 1em clamp(0.75em, 3vw, 1.5em);
   margin-top: 15vh;
   overflow-x: hidden;
   width: 100%;

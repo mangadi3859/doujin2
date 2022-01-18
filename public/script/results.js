@@ -2,6 +2,7 @@ let templateDoujin = $("[data-doujin-template]")[0];
 let templateSeparator = $("[data-separator-template]")[0];
 let related = $("[data-doujins]");
 let btnAdd = $("[data-add]");
+let btnDown = $("[data-btn-down]");
 
 btnAdd.on("click", async (e) => {
     let page = related.data("doujins");
@@ -9,10 +10,6 @@ btnAdd.on("click", async (e) => {
     let params = new URLSearchParams(window.location.search);
 
     if (btnAdd.hasClass("limit")) return;
-    if (numPages && page >= numPages) {
-        btnAdd.addClass("limit");
-        return;
-    }
 
     // params.set("page", 2);
     // console.log(params.toString());
@@ -21,10 +18,13 @@ btnAdd.on("click", async (e) => {
 
     try {
         params.set("page", ++page);
+        $("[data-page-count] [data-current]").text(page);
         let data = await (await fetch(`/api/search/?${params.toString()}`)).json();
         related.data("doujins", page);
 
         if (!numPages) related.data("page", data.num_pages);
+        if (page >= numPages) btnAdd.addClass("limit");
+        console.log(page, numPages);
 
         // related.append(document.createElement("br"));
         let separator = templateSeparator.content.cloneNode(true);
@@ -58,5 +58,19 @@ if (par === "popular") $('[data-sort="popular"]').addClass("active");
 else if (par === "popular-week") $('[data-sort="popular-today"]').addClass("active");
 else if (par === "popular-today") $('[data-sort="popular-today"]').addClass("active");
 else $('[data-sort="recent"]').addClass("active");
+
+let btnObserver = new IntersectionObserver(
+    (entries) => {
+        let btn = entries[0];
+
+        console.log(btn);
+
+        if (!btn.isIntersecting) return btnDown.addClass("active");
+        btnDown.removeClass("active");
+    },
+    { threshold: 0, rootMargin: "200px" },
+);
+
+btnObserver.observe(btnAdd[0]);
 
 export {};

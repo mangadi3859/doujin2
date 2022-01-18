@@ -11,6 +11,9 @@
     <body>
         <%- include("components/_navbar.ejs", { title: "Query Results" }) -%>
         <main id="main" class="d-flex justify-content-around align-items-center position-relative flex-column">
+            <a href="#load-more" class="btn btn-down text-decoration-none position-fixed" data-btn-down>
+                <span class="fas fa-arrow-down"></span>
+            </a>
             <div class="doujin d-flex position-relative flex-column justify-content-center align-items-center">
                 <h1 class="title">Doujin List</h1>
                 <hr />
@@ -28,7 +31,7 @@
                     </div>
                 </div>
                 <br />
-                <div class="doujin-container" data-doujins="1" data-page >
+                <div class="doujin-container" data-doujins="1" data-page="<%= locals.doujin.num_pages %>" >
                     <template data-doujin-template>
                         <a href="" class="card d-flex flex-column justify-content-around align-items-center position-relative">
                             <div class="img-wrapper position-relative w-100 h-auto">
@@ -56,9 +59,10 @@
                         </a>
                     <%}) %>
                 </div>
-                <botton data-add class="btn btn-add">
+                <botton id="load-more" data-add class="btn btn-add<%= locals.doujin.num_pages <= 1 ? " limit" : "" %>">
                     <span class="fas fa-link"></span> Load More
                 </botton>
+                <p class="page-count text-center" data-page-count><span data-current>1</span> of <span data-end><%= locals.doujin.num_pages %></span> <br/> pages <span>loaded</span></p>
             </div>
         </main>
         <%- include("components/_footer.ejs") -%>

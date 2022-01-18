@@ -93,7 +93,7 @@ main#main form .buttons a:hover, main#main form .buttons a:focus {
   }
   main#main form .input-id label {
     display: block;
-    font-size: 1.7rem;
+    font-size: clamp(1rem, 3vw + 0.25rem, 1.7rem);
   }
   main#main form .input-id #doujin-input {
     text-align: center;

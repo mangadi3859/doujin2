@@ -1,0 +1,32 @@
+main#main {
+    font-weight: 400;
+    font-size: clamp(0.75rem, 3vw, 1rem);
+    // font-family: Arial;
+
+    li {
+        margin: 0.5em;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 4vw, 2.6rem);
+    }
+
+    hr {
+        background-color: rgba(white, 0.1);
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin-bottom: 0.5em;
+    }
+
+    ul {
+        padding-inline: clamp(1.5em, 3vw, 3em);
+    }
+
+    span {
+        color: var(--clr-primary);
+        background-color: rgba(#0f0f0f, 0.4);
+        padding: 0.1em 0.25em;
+    }
+}

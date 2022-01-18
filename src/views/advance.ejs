@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="/public/css/advance.css" />
+        <%- include("components/_meta.ejs", { title: "Advance Query", description: "Advance Query Example" }) -%>
+    </head>
+    <body>
+        <%- include("components/_navbar.ejs", { title: "Advance Query Example" }) -%>
+        <main id="main" class="d-flex justify-content-center align-items-center position-relative flex-column">
+            <div class="container">
+                <h1 class="main-title">Advance Query</h1>
+                <hr class="w-100" />
+                <ul>
+                    <li>What a mean by advance query is using <span>&#60;key&#62;:&#60;value&#62;</span></li>
+                    <li>You can search a specific tag or character like <span>tag:lolicon</span> or <span>character:isla</span></li>
+                    <li>Your search is not limited by anything.</li>
+                    <li>Separate your terms by space</li>
+                    <li>You can search the same terms at once. For example <span>tag:yuri tag:incest</span></li>
+                    <li>What happend if the term have a space? Wrap the value with double quotes like this <span>character:"hina hikawa"</span></li>
+                    <li>You also can exclude some term by prefixing it with <span>-</span>. let's say you don't want to get a results with a <span>yaoi</span> tag. Just search it like this <span>-tag:yaoi</span></li>
+                    <li>This is a example of <span>Advance Query</span> <span>tag:"schoolgirl uniform" -tag:yuri -tag:rape parody:original</span></li>
+                </ul>
+            </div>
+        </main>
+        <%- include("components/_footer.ejs") -%>
+    </body>
+</html>
