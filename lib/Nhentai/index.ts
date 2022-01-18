@@ -75,6 +75,7 @@ export async function download(id: string, destination: Writable): Promise<void>
 
         let resImage = await doc.asBuffer();
         //doc.end();
+        buf = null;
         return resImage;
     });
 
@@ -88,6 +89,7 @@ export async function download(id: string, destination: Writable): Promise<void>
     resolve.forEach((buffer, index) => {
         if (!buffer) return;
         let image = new Pdf.ExternalDocument(buffer);
+        buffer = null;
         pdf.addPagesOf(image);
     });
 
