@@ -14,8 +14,6 @@ btnAdd.on("click", async (e) => {
     // params.set("page", 2);
     // console.log(params.toString());
 
-    // console.log(page, numPages);
-
     try {
         params.set("page", ++page);
         $("[data-page-count] [data-current]").text(page);
@@ -24,7 +22,6 @@ btnAdd.on("click", async (e) => {
 
         if (!numPages) related.data("page", data.num_pages);
         if (page >= numPages) btnAdd.addClass("limit");
-        console.log(page, numPages);
 
         // related.append(document.createElement("br"));
         let separator = templateSeparator.content.cloneNode(true);
@@ -62,9 +59,6 @@ else $('[data-sort="recent"]').addClass("active");
 let btnObserver = new IntersectionObserver(
     (entries) => {
         let btn = entries[0];
-
-        console.log(btn);
-
         if (!btn.isIntersecting) return btnDown.addClass("active");
         btnDown.removeClass("active");
     },
