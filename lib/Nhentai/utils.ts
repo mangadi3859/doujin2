@@ -90,7 +90,7 @@ export type Popular = "popular" | "popular-week" | "popular-today" | "";
 
 export interface IQueryOptions {
     sort?: Popular;
-    page?: number;
+    pages?: number;
     language?: string;
 }
 
