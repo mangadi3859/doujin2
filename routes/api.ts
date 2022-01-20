@@ -75,9 +75,9 @@ async function checkRelatedPayload(req: Request, res: Response, next: NextFuncti
 }
 
 async function checkQueryPayload(req: Request, res: Response, next: NextFunction): Promise<any> {
-    const { query, sort, page } = req.query;
+    const { query, sort, pages } = req.query;
     if (!query) return res.status(400).json(ErrorCode.BAD_REQUEST);
-    let doujin = await searchByTerm(<string>query, { sort: <Utils.Popular>sort ?? "", pages: parseInt(<string>page) ?? 1 }).catch(console.error);
+    let doujin = await searchByTerm(<string>query, { sort: <Utils.Popular>sort ?? "", pages: parseInt(<string>pages) ?? 1 }).catch(console.error);
     if (!doujin) return res.status(404).json(ErrorCode.NOT_FOUND);
 
     req["queryResult"] = doujin;
