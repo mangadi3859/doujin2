@@ -24,7 +24,7 @@
                                 <td class="doujin-tags">Parodies:</td>
                                 <td data-tag-value>
                                     <% locals.parodies.forEach((e) => { %>
-                                    <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
+                                    <a href="<%= `/search/results?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
                                 </td>
                             </tr>
@@ -32,7 +32,7 @@
                                 <td class="doujin-tags">Tags:</td>
                                 <td data-tag-value>
                                     <% locals.tags.forEach((e) => { %>
-                                    <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
+                                    <a href="<%= `/search/results?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
                                 </td>
                             </tr>
@@ -40,7 +40,7 @@
                                 <td class="doujin-tags">Characters:</td>
                                 <td data-tag-value>
                                     <% locals.characters.forEach((e) => { %>
-                                    <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
+                                    <a href="<%= `/search/results?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
                                 </td>
                             </tr>
@@ -48,7 +48,7 @@
                                 <td class="doujin-tags">Artists:</td>
                                 <td data-tag-value>
                                     <% locals.artists.forEach((e) => { %>
-                                    <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
+                                    <a href="<%= `/search/results?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
                                 </td>
                             </tr>
@@ -56,7 +56,7 @@
                                 <td class="doujin-tags">Groups:</td>
                                 <td data-tag-value>
                                     <% locals.groups.forEach((e) => { %>
-                                    <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
+                                    <a href="<%= `/search/results?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
                                 </td>
                             </tr>
@@ -64,7 +64,7 @@
                                 <td class="doujin-tags">Languages:</td>
                                 <td data-tag-value>
                                     <% locals.languages.forEach((e) => { %>
-                                    <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
+                                    <a href="<%= `/search/results?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
                                 </td>
                             </tr>
@@ -72,7 +72,7 @@
                                 <td class="doujin-tags">Categories:</td>
                                 <td data-tag-value>
                                     <% locals.categories.forEach((e) => { %>
-                                    <a href="<%= `/result?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
+                                    <a href="<%= `/search/results?query=${encodeURIComponent(`${e.type}:${e.name}`)}` %>" class="badge badge-secondary doujin-tags-data"><%= e.name %></a>
                                     <% }) %>
                                 </td>
                             </tr>
