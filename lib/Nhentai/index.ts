@@ -85,7 +85,7 @@ export async function download(id: string, destination: Writable): Promise<void>
     pdf.pipe(destination, { end: true });
     let resolve = await Promise.all(promises);
 
-    pdf.text(Utils.INFORMATION_FILE, { textAlign: "center", alignment: "center", link: "https://isla-doujin.herokuapp.com", color: 0x1f1f1f });
+    //pdf.text(Utils.INFORMATION_FILE, { textAlign: "center", alignment: "center", link: "https://isla-doujin.herokuapp.com", color: 0x1f1f1f });
     resolve.forEach((buffer, index) => {
         if (!buffer) return;
         let image = new Pdf.ExternalDocument(buffer);
